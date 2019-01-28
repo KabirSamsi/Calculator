@@ -1,19 +1,17 @@
 //Function to make getting id's easier
-function getId(id) {
+const getId = id => {
   let constant = document.getElementById(id)
   return(constant)
-
 }
 
 //Function to make getting classes easier
-function getClass(className) {
+const getClass = className => {
   let constants = document.getElementsByClassName(className)
   return(constants)
-
 }
 
 //Allows calculator to listen to and append items
-function ael(element) {
+const ael = element => {
   var eq = getId('equation')
   element.addEventListener('click', () => {
   eq.value += (element.textContent)
@@ -22,13 +20,10 @@ function ael(element) {
 }
 
 //Color changing function
-function colorChange(number) {
-    buttons[number].style.backgroundColor = scheme[scheme.indexOf(buttons[number].style.backgroundColor) +1]
-
-}
+const colorChange = number => buttons[number].style.backgroundColor = scheme[scheme.indexOf(buttons[number].style.backgroundColor) +1]
 
 //Function to evaluate equations
-function evaluate() {
+const evaluate = () => {
   if (eq.value.includes('²√')) {
     answer = Math.sqrt(eq.value.replace('²√',''))
 
@@ -42,15 +37,13 @@ function evaluate() {
   } else if (eq.value.includes('!')) {
     let i =0
     answer = 1
+
     while(i < eval(eq.value.charAt(0))) {
       i += 1
       answer *= i
-
     }
-
   } else {
     answer = eval(eq.value)
-
   }
 
   ans.push(answer)
@@ -136,5 +129,4 @@ changeColor.addEventListener('click', () => {
   for(let i = 3; i < 24; i += 4) {
     colorChange(i)
   }
-
 })
